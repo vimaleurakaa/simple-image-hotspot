@@ -14,8 +14,8 @@ export const TestComponent = (props: Props) => {
         isEditable
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
-        ImageSource="/sample.png"
-        ActiveMode={HotSpotModes.SELECTION}
+        ImageSource="./sample.png"
+        ActiveMode={HotSpotModes.EDIT}
       >
         <DemoContainer />
       </HotSpotMapper>
