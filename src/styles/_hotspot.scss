@@ -76,9 +76,13 @@
 }
 
 .isSelecting{
+    &.isAdmin{
     .hotspot__dots {
-
-    }
+        &:hover {
+            transform: scale(0.8);
+        }
+        }
+}
 }
 
 .isEditing{
@@ -128,5 +132,17 @@
         text-align: center;
         line-height: 1.5;
         max-width: 720px;
+    }
+}
+
+.hotSpotSelection__nodeContainer {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    display: none;
+
+    &.isActive {
+        display: flex;
+        flex-direction: column;
     }
 }

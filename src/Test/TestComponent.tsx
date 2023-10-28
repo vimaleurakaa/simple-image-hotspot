@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { HotSpotMapper } from "../Lib/Components/HotSpotContainer";
-import { MockDots } from '../Lib/Models/Constants';
+import { MockDots } from "../Lib/Models/Constants";
 import { HotSpotModes } from "../Lib/Models/HotSpotModels";
-import '../styles/index.scss';
-import DemoContainer from './Mock';
+import "../styles/index.scss";
+import DemoContainer from "./Mock";
 
 type Props = {};
 
@@ -15,11 +15,22 @@ export const TestComponent = (props: Props) => {
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
         ImageSource="./sample.png"
-        // ImageSource={''}
-        ActiveMode={HotSpotModes.EDIT}
+        ActiveMode={HotSpotModes.SELECTION}
+        HopSpotNodeChildren={(selectedHotSpotOptions, setSelectedHotSpotOptions) => {
+          return (
+            <button
+              onClick={(e : React.MouseEvent<HTMLElement>) => {
+                e.stopPropagation();
+                setSelectedHotSpotOptions(null);
+              }}
+            >
+              Click {selectedHotSpotOptions}
+            </button>
+          );
+        }}
       >
         <DemoContainer />
       </HotSpotMapper>
     </>
   );
-}
+};

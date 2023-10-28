@@ -1,13 +1,25 @@
-import React from 'react';
+import cx from 'classnames';
+import React, { useCallback, useState } from 'react';
 import { PERCENT_UNIT } from '../Models/Constants';
-import { HotSpotClickHandlerType, IHotSpotDot } from '../Models/HotSpotModels';
+import { HotSpotClickHandlerType, HotSpotModes, IHotSpotDot } from '../Models/HotSpotModels';
 interface IDotIndicator {
   HotSpotDots: IHotSpotDot[];
   HotSpotClickHandler?: HotSpotClickHandlerType;
+  isEditable?: boolean;
+  ActiveMode: HotSpotModes;
+  HopSpotNodeChildren?: (selectedHotSpotOptions: string| null, setSelectedHotSpotOptions: React.Dispatch<React.SetStateAction<string | null>>) => React.ReactNode;
 };
 
 const DotIndicatorInnerView = (props: IDotIndicator) => {
-  const { HotSpotDots, HotSpotClickHandler } = props;
+  const { HotSpotDots, HotSpotClickHandler, isEditable, ActiveMode, HopSpotNodeChildren } = props;
+  const [selectedHotSpotOptions, setSelectedHotSpotOptions] = useState<string | null>(null);
+
+  const HotSpotClickHandlerInner = useCallback((e: React.MouseEvent<HTMLElement>, HotSpot: IHotSpotDot) => {
+    HotSpotClickHandler?.(e, HotSpot);
+    if(isEditable && ActiveMode === HotSpotModes.SELECTION) {
+      setSelectedHotSpotOptions(HotSpot.ID);
+    }
+  }, [isEditable, ActiveMode]);
   
   return (
     <div>
@@ -19,8 +31,17 @@ const DotIndicatorInnerView = (props: IDotIndicator) => {
               top: HotSpot.YCoordinates + PERCENT_UNIT,
               left: HotSpot.XCoordinates + PERCENT_UNIT,
             }}
-            onClick={(e) => HotSpotClickHandler?.(e, HotSpot)}
+            onClick={(e) => HotSpotClickHandlerInner?.(e, HotSpot)}
           >
+            {isEditable && ActiveMode === HotSpotModes.SELECTION && HopSpotNodeChildren && (
+              <div
+                className={cx("hotSpotSelection__nodeContainer", {
+                  isActive: selectedHotSpotOptions === HotSpot.ID,
+                })}
+              >
+                {HopSpotNodeChildren(selectedHotSpotOptions, setSelectedHotSpotOptions)}
+              </div>
+            )}
           </div>
         </div>
       ))}
