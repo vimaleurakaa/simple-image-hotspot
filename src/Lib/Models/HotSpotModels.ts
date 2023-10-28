@@ -29,7 +29,7 @@ export interface IHotSpotMapper {
     ActiveMode?: HotSpotModes;
     onHotspotRemoved?: onHotSpotArrayType;
     HotspotDotsInitial?: IHotSpotDot[];
-    ImageSource: string;
+    ImageSource?: string;
 }
 
 export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;

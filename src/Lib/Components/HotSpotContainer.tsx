@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { useHotspotDots } from '../Hooks/useHotspotDots';
 import { HotSpotModes, IHotSpotMapper } from '../Models/HotSpotModels';
 import { DotIndicator } from './DotIndicator';
+import { ImagePlaceHolder } from './ImagePlaceHolder';
 
 interface IHotSpotMapperInnerViewProps extends IHotSpotMapper{}
 
@@ -34,12 +35,23 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
           <div className="hotspot__image__container">
             <div
               className="hotspot__image"
-              {...(isEditable && ActiveMode === HotSpotModes.EDIT && { onClick: AddHotSpotDot })}
-              {...(isEditable && ActiveMode === HotSpotModes.REPOSITION && { onClick: RepositionHotSpotDot })}
               ref={ParentRef}
+              {...(ImageSource && isEditable &&
+                ActiveMode === HotSpotModes.EDIT && { onClick: AddHotSpotDot })}
+              {...(ImageSource && isEditable &&
+                ActiveMode === HotSpotModes.REPOSITION && { onClick: RepositionHotSpotDot })}
             >
-              <img src={ImageSource} alt="hotspot preview" />
-              <DotIndicator HotSpotClickHandler={HotSpotClickHandler} HotSpotDots={HotSpotDots} />
+              {ImageSource ? (
+                <div className='hotspot__sandwich__wrapper'>
+                  <img src={ImageSource} alt="hotspot preview" />
+                  <DotIndicator
+                    HotSpotClickHandler={HotSpotClickHandler}
+                    HotSpotDots={HotSpotDots}
+                  />
+                </div>
+              ) : (
+                <ImagePlaceHolder />
+              )}
             </div>
           </div>
         </div>

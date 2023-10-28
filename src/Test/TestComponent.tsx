@@ -1,6 +1,6 @@
 import React from 'react';
 import { HotSpotMapper } from "../Lib/Components/HotSpotContainer";
-import { MockDots } from "../Lib/Models/Constants";
+import { MockDots } from '../Lib/Models/Constants';
 import { HotSpotModes } from "../Lib/Models/HotSpotModels";
 import '../styles/index.scss';
 import DemoContainer from './Mock';
@@ -15,6 +15,7 @@ export const TestComponent = (props: Props) => {
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
         ImageSource="./sample.png"
+        // ImageSource={''}
         ActiveMode={HotSpotModes.EDIT}
       >
         <DemoContainer />
