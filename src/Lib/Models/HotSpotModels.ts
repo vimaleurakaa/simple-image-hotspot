@@ -37,4 +37,5 @@ export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;
 export type onHotSpotType = (HotSpot: IHotSpotDot) => void;
 export type HotSpotHandlerType = (e: React.MouseEvent<HTMLElement>) => void;
 export type HotSpotClickHandlerType = (e: React.MouseEvent<HTMLElement>, HotSpot: IHotSpotDot) => void;
-export type HopSpotNodeChildren = (selectedHotSpotOptions: string| null, setSelectedHotSpotOptions: React.Dispatch<React.SetStateAction<string | null>>) => React.ReactNode;
+export type HopSpotNodeChildren = (selectedHotSpotOptions: string | null, setSelectedHotSpotOptions: setSelectedHotspotType) => React.ReactNode;
+export type setSelectedHotspotType = React.Dispatch<React.SetStateAction<string | null>>;
