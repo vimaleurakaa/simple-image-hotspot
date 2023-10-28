@@ -3,7 +3,6 @@
     .hotspot__container {
         display: flex;
         width: 100%;
-        height: 100vh;
 
         .hotspot__image__container {
             display: flex;
@@ -31,11 +30,11 @@
         }
 
         .hotspot__leftContainer {
-            flex: 0 0 65%;
+            flex: 0 0 72%;
         }
 
         .hotspot__rightContainer {
-            flex: 0 0 35%;
+            flex: 0 0 28%;
         }
     }
 }
