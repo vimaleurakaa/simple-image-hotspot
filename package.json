@@ -1,6 +1,6 @@
 {
   "name": "simple-image-hotspot",
-  "version": "0.0.1-rc-0.0.2",
+  "version": "0.0.1-rc-0.0.4",
   "description": "",
   "author": "Vimal Thanikachalam",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "npm": ">=5"
   },
   "scripts": {
-    "copy-files": "copyfiles -u 1 src/styles/**/*.scss src/styles/**/*.css dist/styles/",
+    "copy-files": "copyfiles -u 1 src/styles/**/*.scss src/styles/**/*.css dist/",
     "build": "rm -rf dist && rollup -c && yarn copy-files",
     "prepublish": "rm -rf dist && rollup -c && yarn copy-files",
     "start:rollup": "rollup -c -w",
