@@ -1,14 +1,14 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid';
-import { HotSpotModes, IHotSpotDot, IHotspotHookProps } from "../Models/HotSpotModels";
+import { HotSpotClickHandlerType, HotSpotHandlerType, HotSpotModes, IHotSpotDot, IHotspotHookProps, onHotSpotType } from "../Models/HotSpotModels";
 
 export interface IUseHotspotDotProps {
   HotSpotDots: IHotSpotDot[];
-  AddHotSpotDot: (e: React.MouseEvent<HTMLElement>) => void;
-  RepositionHotSpotDot: (e: React.MouseEvent<HTMLElement>) => void;
-  HotSpotClickHandler: (e:React.MouseEvent<HTMLElement>, HotSpot: IHotSpotDot) => void;
-  RemoveDotHandler: (HotSpot: IHotSpotDot) => void;
+  AddHotSpotDot: HotSpotHandlerType;
+  RepositionHotSpotDot: HotSpotHandlerType;
+  HotSpotClickHandler: HotSpotClickHandlerType;
+  RemoveDotHandler: onHotSpotType;
 }
 
 export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps  => {

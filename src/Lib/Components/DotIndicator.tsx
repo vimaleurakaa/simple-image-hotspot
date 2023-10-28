@@ -1,10 +1,9 @@
-
 import React from 'react';
-import { IHotSpotDot } from '../Models/HotSpotModels';
-
+import { PERCENT_UNIT } from '../Models/Constants';
+import { HotSpotClickHandlerType, IHotSpotDot } from '../Models/HotSpotModels';
 interface IDotIndicator {
   HotSpotDots: IHotSpotDot[];
-  HotSpotClickHandler?: (e:React.MouseEvent<HTMLElement>, HotSpot: IHotSpotDot) => void;
+  HotSpotClickHandler?: HotSpotClickHandlerType;
 };
 
 const DotIndicatorInnerView = (props: IDotIndicator) => {
@@ -15,18 +14,13 @@ const DotIndicatorInnerView = (props: IDotIndicator) => {
       {(HotSpotDots ?? []).map((HotSpot: IHotSpotDot) => (
         <div key={HotSpot.ID} className="dot-container">
           <div
-            className="hotspot__dots"
+            className="hotspot__dots hotspot__ripple"
             style={{
-              top: HotSpot.YCoordinates + "%",
-              left: HotSpot.XCoordinates + "%",
+              top: HotSpot.YCoordinates + PERCENT_UNIT,
+              left: HotSpot.XCoordinates + PERCENT_UNIT,
             }}
             onClick={(e) => HotSpotClickHandler?.(e, HotSpot)}
           >
-            {/* {selectedDot === index ? (
-                <div className="dot-options">
-                  <button onClick={(e) => handleRemoveDot(e, index)}>Remove</button>
-                </div>
-              ) : null} */}
           </div>
         </div>
       ))}

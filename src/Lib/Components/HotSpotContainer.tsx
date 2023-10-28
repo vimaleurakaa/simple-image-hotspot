@@ -1,31 +1,15 @@
 import cx from 'classnames';
 import React, { useRef } from 'react';
 import { useHotspotDots } from '../Hooks/useHotspotDots';
-import { HotSpotModes, IHotSpotDot } from '../Models/HotSpotModels';
+import { HotSpotModes, IHotSpotMapper } from '../Models/HotSpotModels';
 import { DotIndicator } from './DotIndicator';
 
-interface IHotSpotMapperInnerViewProps {
-  isEditable?: boolean;
-  onHotspotClick?: (HotSpot: IHotSpotDot) => void;
-  className?: string;
-  children?: React.ReactElement;
-  ActiveMode?: HotSpotModes;
-  onHotspotRemoved?: (HotSpot: IHotSpotDot[]) => void;
-  HotspotDotsInitial?: IHotSpotDot[];
-  ImageSource: string;
-}
+interface IHotSpotMapperInnerViewProps extends IHotSpotMapper{}
 
 const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
-  const {
-    isEditable,
-    onHotspotClick,
-    className = "",
-    children = null,
-    ActiveMode = HotSpotModes.SELECTION,
-    onHotspotRemoved,
-    ImageSource,
-    HotspotDotsInitial = [],
-  } = props;
+  const { isEditable, onHotspotClick, className = "", children = null, ActiveMode = HotSpotModes.SELECTION,
+    onHotspotRemoved, ImageSource, HotspotDotsInitial = [] } = props;
+
   const ParentRef = useRef(null);
   const { AddHotSpotDot, HotSpotDots, HotSpotClickHandler, RepositionHotSpotDot } = useHotspotDots({
     ParentRef,
@@ -51,8 +35,7 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
             <div
               className="hotspot__image"
               {...(isEditable && ActiveMode === HotSpotModes.EDIT && { onClick: AddHotSpotDot })}
-              {...(isEditable &&
-                ActiveMode === HotSpotModes.REPOSITION && { onClick: RepositionHotSpotDot })}
+              {...(isEditable && ActiveMode === HotSpotModes.REPOSITION && { onClick: RepositionHotSpotDot })}
               ref={ParentRef}
             >
               <img src={ImageSource} alt="hotspot preview" />

@@ -15,7 +15,7 @@ export const TestComponent = (props: Props) => {
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
         ImageSource="/sample.png"
-        ActiveMode={HotSpotModes.EDIT}
+        ActiveMode={HotSpotModes.SELECTION}
       >
         <DemoContainer />
       </HotSpotMapper>

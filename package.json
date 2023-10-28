@@ -1,6 +1,6 @@
 {
-  "name": "sample-test-package-rollup",
-  "version": "0.0.1-rc-0.0.2",
+  "name": "simple-image-hotspot",
+  "version": "0.0.1-rc-0.0.1",
   "description": "",
   "author": "Vimal Thanikachalam",
   "license": "MIT",
@@ -65,3 +65,4 @@
     ]
   }
 }
+

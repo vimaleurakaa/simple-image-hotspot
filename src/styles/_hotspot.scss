@@ -1,5 +1,4 @@
 .hotspot__mainWrapper {
-    background-color: $bgPrimary;
 
     .hotspot__container {
         display: flex;
@@ -41,11 +40,10 @@
     }
 }
 
-
 .hotspot__dots {
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,43 +51,49 @@
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
-    line-height: 24px;
-    font-size: 12px;
     font-weight: bold;
-    transition: all 0.214s ease-in-out, transform 600ms cubic-bezier(.05,.97,.34,1.24);
     z-index: 1;
+    transform: scale(0.8);
+    transition: all 0.214s ease-in-out, transform 600ms cubic-bezier(.05,.97,.34,1.24);
 
     &:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
     }
 
-    &:after {
-        content: "";
-        box-sizing: content-box;
-        top: -52%;
-        left: -52%;
-        padding: 12px;
-        background: radial-gradient(50% 50% at 50% 50%,rgb(255 255 255 / 0) 0%,rgb(255 255 255 / .3) 100%);
-        border-radius: inherit;
-        width: 100%;
-        height: 100%;
-        animation: 2s ease-in-out infinite alternate ping;
+    &::after {
+        content: '';
         position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 100%;
+        color: $white;
+        animation-name: ripple;
+        animation-duration: 1.6s;
+        transform: translate(-50%, -50%);
+        animation-iteration-count: infinite;
+    }
+}
+
+.isSelecting{
+    .hotspot__dots {
+
     }
 }
 
 .isEditing{
     .hotspot__dots {
-        background-color: green;
+        background-color: #abff49;
     }
 }
 .isDeleting{
     .hotspot__dots {
-
+        background-color: #ff2f2f;
     }
 }
 .isRepositioning{
     .hotspot__dots {
-
+        background-color: #ffde30;
     }
 }

@@ -1,3 +1,4 @@
+export const PERCENT_UNIT = '%';
 export const MockDots = [
     {
         "ID": "1d576045-60f6-4fde-ac1d-d0bbe2dcae17",
