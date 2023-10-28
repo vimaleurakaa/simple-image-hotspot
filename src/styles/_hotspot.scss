@@ -1,0 +1,95 @@
+.hotspot__mainWrapper {
+    background-color: $bgPrimary;
+
+    .hotspot__container {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+
+        .hotspot__image__container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+
+            @media (min-width : 1460px) {
+                padding: 4rem;
+            }
+
+            .hotspot__image {
+                width: 100%;
+                height: auto;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .hotspot__leftContainer {
+            flex: 0 0 65%;
+        }
+
+        .hotspot__rightContainer {
+            flex: 0 0 35%;
+        }
+    }
+}
+
+
+.hotspot__dots {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.214s ease-in-out, transform 600ms cubic-bezier(.05,.97,.34,1.24);
+    z-index: 1;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    &:after {
+        content: "";
+        box-sizing: content-box;
+        top: -52%;
+        left: -52%;
+        padding: 12px;
+        background: radial-gradient(50% 50% at 50% 50%,rgb(255 255 255 / 0) 0%,rgb(255 255 255 / .3) 100%);
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        animation: 2s ease-in-out infinite alternate ping;
+        position: absolute;
+    }
+}
+
+.isEditing{
+    .hotspot__dots {
+        background-color: green;
+    }
+}
+.isDeleting{
+    .hotspot__dots {
+
+    }
+}
+.isRepositioning{
+    .hotspot__dots {
+
+    }
+}

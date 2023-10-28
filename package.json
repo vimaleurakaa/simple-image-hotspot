@@ -1,0 +1,67 @@
+{
+  "name": "sample-test-package-rollup",
+  "version": "0.0.1-rc-0.0.2",
+  "description": "",
+  "author": "Vimal Thanikachalam",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "scripts": {
+    "copy-files": "copyfiles -u 1 src/Lib/**/*.scss src/Lib/**/*.css dist/styles/",
+    "build": "rm -rf dist && rollup -c && yarn copy-files",
+    "prepublish": "rm -rf dist && rollup -c && yarn copy-files",
+    "start:rollup": "rollup -c -w",
+    "start": "react-scripts start"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/uuid": "^9.0.6",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "copyfiles": "^2.4.1",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "rollup": "2.78.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.31.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "@types/node": "^16.18.59",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.69.5",
+    "typescript": "^4.9.5",
+    "uuid": "^9.0.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "sass": "^1.69.5",
+    "uuid": "^9.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
