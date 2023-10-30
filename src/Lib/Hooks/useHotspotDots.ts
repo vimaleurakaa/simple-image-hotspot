@@ -1,7 +1,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { v4 as uuid } from 'uuid';
-import { HotSpotClickHandlerType, HotSpotHandlerType, HotSpotModes, IHotSpotDot, IHotspotHookProps, onHotSpotType } from "../Models/HotSpotModels";
+import { AttachmentTypes, HotSpotClickHandlerType, HotSpotHandlerType, HotSpotModes, IHotSpotDot, IHotspotHookProps, onHotSpotType } from "../Models/HotSpotModels";
 
 export interface IUseHotspotDotProps {
   HotSpotDots: IHotSpotDot[];
@@ -56,6 +56,8 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         ID: uuid(),
         YCoordinates: coordinates.top,
         XCoordinates: coordinates.left,
+        ReferenceID: null,
+        AttachmentType : AttachmentTypes.IMAGE
       };
 
       setHotSpotDots([...HotSpotDots, NewHotSpotDot]);

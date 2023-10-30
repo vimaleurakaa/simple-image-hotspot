@@ -1,36 +1,41 @@
 import { RefObject } from "react";
 
+export enum AttachmentTypes {
+  IMAGE = "IMAGE",
+  PRODUCT = "PRODUCT",
+}
 export interface IHotSpotDot {
-    ID: string;
-    XCoordinates: number;
-    YCoordinates: number;
+  ID: string;
+  XCoordinates: number;
+  YCoordinates: number;
+  ReferenceID: string | null;
+  AttachmentType: AttachmentTypes;
 }
 
 export enum HotSpotModes {
-    SELECTION = 'Select',
-    REPOSITION = 'Reposition',
-    EDIT = 'Add New',
-    REMOVE = 'Delete'
+  SELECTION = "Select",
+  REPOSITION = "Reposition",
+  EDIT = "Add New",
+  REMOVE = "Delete",
+}
+export interface IHotspotHookProps {
+  ParentRef: RefObject<HTMLElement>;
+  HotspotDotsInitial: IHotSpotDot[];
+  ActiveMode: HotSpotModes | null;
+  onHotspotClick?: onHotSpotType;
+  onHotspotRemoved?: onHotSpotArrayType;
 }
 
-export interface IHotspotHookProps {
-    ParentRef: RefObject<HTMLElement>;
-    HotspotDotsInitial: IHotSpotDot[];
-    ActiveMode : HotSpotModes | null;
-    onHotspotClick?: onHotSpotType;
-    onHotspotRemoved?: onHotSpotArrayType;
-  }
-
 export interface IHotSpotMapper {
-    isEditable?: boolean;
-    className?: string;
-    children?: React.ReactElement;
-    ActiveMode?: HotSpotModes;
-    HotspotDotsInitial?: IHotSpotDot[];
-    ImageSource?: string;
-    onHotspotClick?: onHotSpotType;
-    onHotspotRemoved?: onHotSpotArrayType;
-    HopSpotNodeChildren?: HopSpotNodeChildren;
+  isEditable?: boolean;
+  className?: string;
+  children?: React.ReactElement;
+  ActiveMode?: HotSpotModes;
+  HotspotDotsInitial?: IHotSpotDot[];
+  ImageSource?: string;
+  onHotspotClick?: onHotSpotType;
+  onHotspotRemoved?: onHotSpotArrayType;
+  HopSpotNodeChildren?: HopSpotNodeChildren;
 }
 
 export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;
