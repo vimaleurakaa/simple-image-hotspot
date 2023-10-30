@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HotSpotMapper } from "../Lib/Components/HotSpotContainer";
 import { MockDots } from "../Lib/Models/Constants";
 import { HotSpotModes } from "../Lib/Models/HotSpotModels";
@@ -8,6 +8,7 @@ import DemoContainer from "./Mock";
 type Props = {};
 
 export const TestComponent = (props: Props) => {
+  const [ActiveMode, setActiveMode] = useState(HotSpotModes.SELECTION);
   return (
     <>
       <HotSpotMapper
@@ -15,11 +16,11 @@ export const TestComponent = (props: Props) => {
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
         ImageSource="./sample.png"
-        ActiveMode={HotSpotModes.SELECTION}
+        ActiveMode={ActiveMode}
         HopSpotNodeChildren={(selectedHotSpotOptions, setSelectedHotSpotOptions) => {
           return (
             <button
-              onClick={(e : React.MouseEvent<HTMLElement>) => {
+              onClick={(e: React.MouseEvent<HTMLElement>) => {
                 e.stopPropagation();
                 setSelectedHotSpotOptions(null);
               }}
@@ -31,6 +32,13 @@ export const TestComponent = (props: Props) => {
       >
         <DemoContainer />
       </HotSpotMapper>
+
+      
+      <select onChange={(e) => setActiveMode(e.target.value as HotSpotModes)}>
+        {Object.values(HotSpotModes).map((m) => (
+          <option value={m} key={m}>{m}</option>
+        ))}
+      </select>
     </>
   );
 };

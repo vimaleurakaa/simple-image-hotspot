@@ -69,7 +69,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
       setSelectedDot(null);
       onHotspotRemoved?.(updatedDots);
     }
-  }, [ActiveMode, HotSpotDots, onHotspotRemoved]);
+  }, [ActiveMode, HotSpotDots, onHotspotRemoved, setHotSpotDots]);
 
   const HotSpotClickHandler = useCallback((e: React.MouseEvent<HTMLElement>, Hotspot: IHotSpotDot) => {
     e.stopPropagation();
@@ -78,7 +78,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
       onHotspotClick?.(Hotspot);
       RemoveDotHandler(Hotspot);
     } 
-  }, [HotSpotDots, onHotspotClick, RemoveDotHandler]);
+  }, [HotSpotDots, onHotspotClick, RemoveDotHandler, setSelectedDot]);
 
   return {
     HotSpotDots,

@@ -19,7 +19,7 @@ const DotIndicatorInnerView = (props: IDotIndicator) => {
     if(isEditable && ActiveMode === HotSpotModes.SELECTION) {
       setSelectedHotSpotOptions(HotSpot.ID);
     }
-  }, [isEditable, ActiveMode]);
+  }, [isEditable, ActiveMode, HotSpotDots]);
   
   return (
     <div>
