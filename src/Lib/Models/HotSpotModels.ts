@@ -29,7 +29,6 @@ export interface IHotspotHookProps {
 export interface IHotSpotMapper {
   isEditable?: boolean;
   className?: string;
-  children?: React.ReactElement;
   ActiveMode?: HotSpotModes;
   HotspotDotsInitial?: IHotSpotDot[];
   ImageSource?: string;

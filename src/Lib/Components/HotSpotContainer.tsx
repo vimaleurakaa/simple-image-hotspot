@@ -8,7 +8,7 @@ import { ImagePlaceHolder } from './ImagePlaceHolder';
 interface IHotSpotMapperInnerViewProps extends IHotSpotMapper{}
 
 const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
-  const { isEditable, onHotspotClick, className = "", children = null, ActiveMode = HotSpotModes.SELECTION,
+  const { isEditable, onHotspotClick, className = "", ActiveMode = HotSpotModes.SELECTION,
     onHotspotRemoved, ImageSource, HotspotDotsInitial = [], HopSpotNodeChildren } = props;
 
   const ParentRef = useRef(null);
@@ -32,7 +32,8 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
       })}
     >
       <div className="hotspot__container">
-        <div className="hotspot__leftContainer">
+
+        <div className="hotspot__main__wrapper">
           <div className="hotspot__image__container">
             <div
               className="hotspot__image"
@@ -45,6 +46,7 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
               {ImageSource ? (
                 <div className='hotspot__sandwich__wrapper'>
                   <img src={ImageSource} alt="hotspot preview" />
+
                   <DotIndicator
                     isEditable={isEditable}
                     ActiveMode={ActiveMode}
@@ -52,6 +54,7 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
                     HotSpotDots={HotSpotDots}
                     HopSpotNodeChildren={HopSpotNodeChildren}
                   />
+                  
                 </div>
               ) : (
                 <ImagePlaceHolder />
@@ -60,7 +63,6 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
           </div>
         </div>
 
-        <div className="hotspot__rightContainer">{children}</div>
       </div>
     </div>
   );
