@@ -57,7 +57,8 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         YCoordinates: coordinates.top,
         XCoordinates: coordinates.left,
         ReferenceID: null,
-        AttachmentType : AttachmentTypes.IMAGE
+        AttachmentType : AttachmentTypes.IMAGE,
+        Color: `#${Math.floor(Math.random()*16777215).toString(16)}`
       };
 
       setHotSpotDots([...HotSpotDots, NewHotSpotDot]);

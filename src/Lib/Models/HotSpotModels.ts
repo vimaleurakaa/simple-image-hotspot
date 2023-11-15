@@ -10,6 +10,7 @@ export interface IHotSpotDot {
   YCoordinates: number;
   ReferenceID: string | null;
   AttachmentType: AttachmentTypes;
+  Color: string;
 }
 
 export enum HotSpotModes {
