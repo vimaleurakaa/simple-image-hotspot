@@ -8,10 +8,11 @@ interface IDotIndicator {
   isEditable?: boolean;
   ActiveMode: HotSpotModes;
   HopSpotNodeChildren?: (selectedHotSpotOptions: string| null, setSelectedHotSpotOptions: React.Dispatch<React.SetStateAction<string | null>>) => React.ReactNode;
+  mapActiveColors: boolean;
 };
 
 const DotIndicatorInnerView = (props: IDotIndicator) => {
-  const { HotSpotDots, HotSpotClickHandler, isEditable, ActiveMode, HopSpotNodeChildren } = props;
+  const { HotSpotDots, HotSpotClickHandler, isEditable, ActiveMode, HopSpotNodeChildren, mapActiveColors } = props;
   const [selectedHotSpotOptions, setSelectedHotSpotOptions] = useState<string | null>(null);
 
   const HotSpotClickHandlerInner = useCallback((e: React.MouseEvent<HTMLElement>, HotSpot: IHotSpotDot) => {
@@ -30,6 +31,7 @@ const DotIndicatorInnerView = (props: IDotIndicator) => {
             style={{
               top: HotSpot.YCoordinates + PERCENT_UNIT,
               left: HotSpot.XCoordinates + PERCENT_UNIT,
+              background: mapActiveColors ? HotSpot.Color : 'revert-layer'
             }}
             onClick={(e) => HotSpotClickHandlerInner?.(e, HotSpot)}
           >

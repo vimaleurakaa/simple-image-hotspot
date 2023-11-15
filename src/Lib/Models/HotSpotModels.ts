@@ -36,6 +36,7 @@ export interface IHotSpotMapper {
   onHotspotClick?: onHotSpotType;
   onHotspotRemoved?: onHotSpotArrayType;
   HopSpotNodeChildren?: HopSpotNodeChildren;
+  mapActiveColors: boolean;
 }
 
 export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;
