@@ -25,6 +25,8 @@ export interface IHotspotHookProps {
   ActiveMode: HotSpotModes | null;
   onHotspotClick?: onHotSpotType;
   onHotspotRemoved?: onHotSpotArrayType;
+  onHotspotRepositioned?: onHotSpotType;
+  onHotspotAdded?: onHotSpotType;
 }
 
 export interface IHotSpotMapper {
@@ -36,6 +38,8 @@ export interface IHotSpotMapper {
   onHotspotClick?: onHotSpotType;
   onHotspotRemoved?: onHotSpotArrayType;
   HopSpotNodeChildren?: HopSpotNodeChildren;
+  onHotspotRepositioned?: onHotSpotType;
+  onHotspotAdded?: onHotSpotType;
   mapActiveColors: boolean;
 }
 

@@ -12,7 +12,7 @@ export interface IUseHotspotDotProps {
 }
 
 export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps  => {
-  const { ParentRef, ActiveMode, onHotspotClick, onHotspotRemoved, HotspotDotsInitial } = props;
+  const { ParentRef, ActiveMode, onHotspotClick, onHotspotRemoved, HotspotDotsInitial, onHotspotAdded, onHotspotRepositioned } = props;
   const [HotSpotDots, setHotSpotDots] = useState<IHotSpotDot[]>(HotspotDotsInitial);
   const [selectedDot, setSelectedDot] = useState<number | null>(null);
 
@@ -44,6 +44,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         updatedDots[selectedDot].YCoordinates = coordinates.top;
         updatedDots[selectedDot].XCoordinates = coordinates.left;
   
+        onHotspotRepositioned?.(updatedDots[selectedDot]);
         setHotSpotDots(updatedDots);
         setSelectedDot(null);
     }
@@ -62,6 +63,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
       };
 
       setHotSpotDots([...HotSpotDots, NewHotSpotDot]);
+      onHotspotAdded?.(NewHotSpotDot);
     }
   }, [ActiveMode, calculateCoordinates, HotSpotDots]);
 
