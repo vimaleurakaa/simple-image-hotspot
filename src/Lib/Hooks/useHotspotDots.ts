@@ -48,7 +48,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         setHotSpotDots(updatedDots);
         setSelectedDot(null);
     }
-  }, [ActiveMode, HotSpotDots, calculateCoordinates, selectedDot])
+  }, [ActiveMode, HotSpotDots, calculateCoordinates, selectedDot, onHotspotRepositioned])
 
   const AddHotSpotDot = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (ActiveMode === HotSpotModes.EDIT) {
