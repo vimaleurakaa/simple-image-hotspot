@@ -44,8 +44,8 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         updatedDots[selectedDot].YCoordinates = coordinates.top;
         updatedDots[selectedDot].XCoordinates = coordinates.left;
   
-        onHotspotRepositioned?.(updatedDots[selectedDot]);
         setHotSpotDots(updatedDots);
+        onHotspotRepositioned?.(updatedDots[selectedDot]);
         setSelectedDot(null);
     }
   }, [ActiveMode, HotSpotDots, calculateCoordinates, selectedDot, onHotspotRepositioned])

@@ -3,7 +3,6 @@ import { HotSpotMapper } from "../Lib/Components/HotSpotContainer";
 import { MockDots } from "../Lib/Models/Constants";
 import { HotSpotModes } from "../Lib/Models/HotSpotModels";
 import "../styles/index.scss";
-import DemoContainer from "./Mock";
 
 type Props = {};
 
@@ -15,8 +14,12 @@ export const TestComponent = (props: Props) => {
         isEditable
         onHotspotClick={console.log}
         HotspotDotsInitial={MockDots}
+        onHotspotAdded={(e) => console.log(e)}
+        onHotspotRepositioned={(e) => console.log(e)}
+        onHotspotRemoved={(e) => console.log(e)}
         ImageSource="./sample.png"
         ActiveMode={ActiveMode}
+        mapActiveColors={HotSpotModes.SELECTION === ActiveMode}
         HopSpotNodeChildren={(selectedHotSpotOptions, setSelectedHotSpotOptions) => {
           return (
             <button
@@ -29,9 +32,7 @@ export const TestComponent = (props: Props) => {
             </button>
           );
         }}
-      >
-        <DemoContainer />
-      </HotSpotMapper>
+      />
 
       
       <select onChange={(e) => setActiveMode(e.target.value as HotSpotModes)}>

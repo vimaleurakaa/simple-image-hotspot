@@ -31,7 +31,8 @@ const DotIndicatorInnerView = (props: IDotIndicator) => {
             style={{
               top: HotSpot.YCoordinates + PERCENT_UNIT,
               left: HotSpot.XCoordinates + PERCENT_UNIT,
-              background: mapActiveColors ? HotSpot.Color : 'revert-layer'
+              background: mapActiveColors ? HotSpot.Color : 'revert-layer',
+              border: mapActiveColors ? '3px solid #fff' : 'none',
             }}
             onClick={(e) => HotSpotClickHandlerInner?.(e, HotSpot)}
           >
