@@ -35,7 +35,7 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
     const CoordinateXAxis = (ClampedClientCoordinateX / ParentNodeRefRect.width) * 100;
 
     return { top: CoordinateYAxis, left: CoordinateXAxis };
-  }, [ParentRef]);
+  }, [ParentRef, onHotspotRepositioned]);
 
   const RepositionHotSpotDot = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (ActiveMode === HotSpotModes.REPOSITION && selectedDot !== null) {
@@ -45,8 +45,8 @@ export const useHotspotDots = (props : IHotspotHookProps)  : IUseHotspotDotProps
         updatedDots[selectedDot].XCoordinates = coordinates.left;
   
         setHotSpotDots(updatedDots);
-        onHotspotRepositioned?.(updatedDots[selectedDot]);
         setSelectedDot(null);
+        onHotspotRepositioned?.(updatedDots[selectedDot]);
     }
   }, [ActiveMode, HotSpotDots, calculateCoordinates, selectedDot, onHotspotRepositioned])
 

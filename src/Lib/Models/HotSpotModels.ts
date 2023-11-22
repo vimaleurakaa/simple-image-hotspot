@@ -41,6 +41,7 @@ export interface IHotSpotMapper {
   onHotspotRepositioned?: onHotSpotType;
   onHotspotAdded?: onHotSpotType;
   mapActiveColors: boolean;
+  ImageComponent?: React.ReactElement;
 }
 
 export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;
