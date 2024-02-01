@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HotSpotMapper } from "../Lib/Components/HotSpotContainer";
 import { MockDots } from "../Lib/Models/Constants";
-import { HotSpotModes } from "../Lib/Models/HotSpotModels";
+import { HotSpotModes, IHotSpotDot } from "../Lib/Models/HotSpotModels";
 import "../styles/index.scss";
 
 type Props = {};
@@ -32,6 +32,7 @@ export const TestComponent = (props: Props) => {
             </button>
           );
         }}
+        CustomHotspotChildrenElement={(Hotspot: IHotSpotDot) => <h2>{Hotspot.ID}</h2>}
       />
 
       

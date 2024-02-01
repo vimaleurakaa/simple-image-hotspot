@@ -9,7 +9,7 @@ interface IHotSpotMapperInnerViewProps extends IHotSpotMapper{}
 
 const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
   const { isEditable, onHotspotClick, className = "", ActiveMode = HotSpotModes.SELECTION,
-    onHotspotRemoved, ImageSource, HotspotDotsInitial = [], HopSpotNodeChildren, mapActiveColors, onHotspotAdded, onHotspotRepositioned, ImageComponent } = props;
+    onHotspotRemoved, ImageSource, HotspotDotsInitial = [], HopSpotNodeChildren, mapActiveColors, onHotspotAdded, onHotspotRepositioned, ImageComponent, CustomHotspotChildrenElement } = props;
 
   const ParentRef = useRef(null);
   const { AddHotSpotDot, HotSpotDots, HotSpotClickHandler, RepositionHotSpotDot } = useHotspotDots({
@@ -55,6 +55,7 @@ const HotSpotMapperInnerView = (props: IHotSpotMapperInnerViewProps) => {
                     HotSpotDots={HotSpotDots}
                     HopSpotNodeChildren={HopSpotNodeChildren}
                     mapActiveColors={mapActiveColors}
+                    CustomHotspotChildrenElement={CustomHotspotChildrenElement}
                   />
                   
                 </div>

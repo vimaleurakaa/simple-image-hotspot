@@ -11,6 +11,7 @@ export interface IHotSpotDot {
   ReferenceID: string | null;
   AttachmentType: AttachmentTypes;
   Color: string;
+  HotSpotLabel?: string;
 }
 
 export enum HotSpotModes {
@@ -42,6 +43,7 @@ export interface IHotSpotMapper {
   onHotspotAdded?: onHotSpotType;
   mapActiveColors: boolean;
   ImageComponent?: React.ReactElement;
+  CustomHotspotChildrenElement?: (HotSpotDot: IHotSpotDot) => React.ReactNode;
 }
 
 export type onHotSpotArrayType = (HotSpot: IHotSpotDot[]) => void;

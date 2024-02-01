@@ -70,6 +70,16 @@
         transform: translate(-50%, -50%);
         animation-iteration-count: infinite;
     }
+
+    &.disableDefaultHotspot {
+        width: 0;
+        height: 0;
+        border: 0 !important;
+
+        &::after{
+            opacity: 0;
+        }
+    }
 }
 
 .isSelecting{
